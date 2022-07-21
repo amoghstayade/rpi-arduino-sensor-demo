@@ -22,13 +22,7 @@ if __name__ == '__main__':
             print(line)
             print("SENDING TO EVENTHUB")
             event_data_batch = client.create_batch()
-            can_add = True
-            while can_add:
-                try:
-                    event_data_batch.add(EventData(line))
-                except ValueError:
-                    can_add = False  # EventDataBatch object reaches max_size.
-
+            event_data_batch.add(EventData(line))
             with client:
                 client.send_batch(event_data_batch)
                 print("sent to eventhub")
