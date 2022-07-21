@@ -25,7 +25,7 @@ if __name__ == '__main__':
                     print("Incomplete line")
                 else:
                     print(line)
-                    while sample < 10:
+                    while sample < 50:
                         print(sample)
                         sample+=1
                         continue
