@@ -21,21 +21,18 @@ if __name__ == '__main__':
     try:
         while True:
             try:
-                line = ser.readline().decode('utf-8')
+                line = ser.readline().decode('utf-8') #exception added to catch invalid characters
                 count+=1
                 if (line[0]!="T"):
                     print("Incomplete line")
                 else:
-                    now = time.time()
+                    """Logic to sample every 2.5 seconds"""
                     if sample < 50:
                         sample+=1
                     else:
                         sample = 0
-                        # later = time.time()
                         print("sample: ", count)
-                        # print("Diff: ", int(later-now))
-                        print(line)
-                        print("SENDING TO EVENTHUB")
+                        print(f"sending {line} to eventhub")
                         event_data_batch = client.create_batch()
                         event_data_batch.add(EventData(line))
                         with client:
