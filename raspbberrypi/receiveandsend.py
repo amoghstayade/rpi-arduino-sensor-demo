@@ -25,7 +25,7 @@ if __name__ == '__main__':
             can_add = True
             while can_add:
                 try:
-                    event_data_batch.add(EventData('Message inside EventBatchData'))
+                    event_data_batch.add(EventData(line))
                 except ValueError:
                     can_add = False  # EventDataBatch object reaches max_size.
 
