@@ -24,11 +24,11 @@ if __name__ == '__main__':
                 else:
                     print(line)
                     print("SENDING TO EVENTHUB")
-                    # event_data_batch = client.create_batch()
-                    # event_data_batch.add(EventData(line))
-                    # with client:
-                    #     client.send_batch(event_data_batch)
-                    #     print("sent to eventhub")
+                    event_data_batch = client.create_batch()
+                    event_data_batch.add(EventData(line))
+                    with client:
+                        client.send_batch(event_data_batch)
+                        print("sent to eventhub")
             except KeyboardInterrupt:
                 sys.exit()
             except:
