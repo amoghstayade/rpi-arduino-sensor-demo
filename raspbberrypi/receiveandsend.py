@@ -29,6 +29,8 @@ if __name__ == '__main__':
                     # with client:
                     #     client.send_batch(event_data_batch)
                     #     print("sent to eventhub")
+            except KeyboardInterrupt:
+                sys.exit()
             except:
                 print("invalid line")
     except KeyboardInterrupt:
