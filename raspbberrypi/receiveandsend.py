@@ -13,6 +13,8 @@ connection_str = os.getenv('CONNECTION_STRING')
 eventhub_name = os.getenv('EVENTHUB_NAME')
 client = EventHubProducerClient.from_connection_string(connection_str, eventhub_name=eventhub_name)
 
+sample = 0
+
 if __name__ == '__main__':
     ser = serial.Serial('/dev/ttyACM0', 9600)
     try:
@@ -23,6 +25,11 @@ if __name__ == '__main__':
                     print("Incomplete line")
                 else:
                     print(line)
+                    while sample < 10:
+                        print(sample)
+                        sample+=1
+                        continue
+                    sample = 0
                     print("SENDING TO EVENTHUB")
                     event_data_batch = client.create_batch()
                     event_data_batch.add(EventData(line))
