@@ -18,7 +18,7 @@ if __name__ == '__main__':
 
     while True:
 #        if ser.in_waiting > 0:
-       try:
+        try:
           line = ser.readline().decode('utf-8')
           print(line[:3])
           if (line[0]!="T"):
@@ -26,6 +26,7 @@ if __name__ == '__main__':
           else:
              print(line)
              print("SENDING TO EVENTHUB")
+        
 #            event_data_batch = client.create_batch()
 #            event_data_batch.add(EventData(line))
 #            with client:
