@@ -16,6 +16,7 @@ int pushButton = 8;
 int ledState = HIGH;         // the current state of the output pin
 int buttonState;             // the current reading from the input pin
 int lastButtonState = LOW;   // the previous reading from the input pin
+String buttonStateString = "ON";
 
 unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
 unsigned long debounceDelay = 50;    // the debounce time; increase if the output flickers
@@ -76,6 +77,9 @@ void loop(){
   lcd.setCursor(0, 1);
   // Write to the lcd screen
   temp_humidity_light_string = String(int(DHT.temperature)) + (char)223 + "C" + " | " + String(int(DHT.humidity)) + "% | " + buttonStateString;
+  Serial.println("Temperature:" + String(int(DHT.temperature)));
+  Serial.println("Humidity:" + String(int(DHT.humidity)));
+  Serial.println("Light:" + buttonStateString);
   lcd.print(temp_humidity_light_string);
   delay(50);
 }
