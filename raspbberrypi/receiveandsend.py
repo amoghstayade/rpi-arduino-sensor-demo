@@ -5,6 +5,7 @@ from azure.eventhub import EventHubProducerClient, EventData
 import os
 from dotenv import load_dotenv
 import sys
+import time
 
 load_dotenv()
 
@@ -24,12 +25,14 @@ if __name__ == '__main__':
                 if (line[0]!="T"):
                     print("Incomplete line")
                 else:
-                    print(line)
-                    while sample < 50:
-                        print(sample)
+                    now = time.time()
+                    while sample < 100:
                         sample+=1
                         continue
                     sample = 0
+                    later = time.time()
+                    print("Diff: ", int(later-now))
+                    print(line)
                     print("SENDING TO EVENTHUB")
                     event_data_batch = client.create_batch()
                     event_data_batch.add(EventData(line))
