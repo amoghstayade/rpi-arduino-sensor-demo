@@ -70,16 +70,11 @@ void loop(){
 
   // Code for DHT sensor check
   int chk = DHT.read11(DHT11_PIN);
-//  Serial.print("Temperature = ");
-//  Serial.println(DHT.temperature);
-//  Serial.print("Humidity = ");
-//  Serial.println(DHT.humidity);
   lcd.setCursor(0, 1);
   // Write to the lcd screen
-  temp_humidity_light_string = String(int(DHT.temperature)) + (char)223 + "C" + " | " + String(int(DHT.humidity)) + "% | " + buttonStateString;
-  Serial.println("Temperature:" + String(int(DHT.temperature)));
-  Serial.println("Humidity:" + String(int(DHT.humidity)));
-  Serial.println("Light:" + buttonStateString);
   lcd.print(temp_humidity_light_string);
+  // TODO: add sampling logic here
+  temp_humidity_light_string = String(int(DHT.temperature)) + (char)223 + "C" + " | " + String(int(DHT.humidity)) + "% | " + buttonStateString;
+  Serial.println("Temperature:" + String(int(DHT.temperature)) + ",Humidity:" + String(int(DHT.humidity)) + ",Light:" + buttonStateString);
   delay(50);
 }
