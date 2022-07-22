@@ -14,3 +14,9 @@ docker run -it --device=/dev/ttyACM0 image_name
 # Commands
 docker build -t send_to_eventhub .
 docker run -it --device=/dev/ttyACM0 image_name
+
+# Packages
+
+1. Arduino (C++) - Load in Arduino Uno with Arduino IDE
+2. raspberrypi_send_to_iothub - Docker image in raspberrypi - run with **docker run -d --device=/dev/ttyACM0 send_to_eventhub**
+3. raspberrypi_send_todb - Docker image in rasperrypi - run with **docker run -d send_to_db**
