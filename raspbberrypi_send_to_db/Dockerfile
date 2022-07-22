@@ -7,6 +7,7 @@ COPY .env .
 RUN apt-get update -y
 RUN apt-get update
 RUN apt-get install -y cmake
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 CMD ["python", "send_to_db.py"]
