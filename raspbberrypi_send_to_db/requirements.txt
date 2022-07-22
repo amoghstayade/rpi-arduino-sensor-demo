@@ -1,0 +1,4 @@
+azure-eventhub
+python-dotenv
+azure-eventhub-checkpointstoreblob-aio
+azure-cosmos
